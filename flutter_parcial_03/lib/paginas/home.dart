@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 4.0, horizontal: 8),
                               child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
                                         left: 20,
                                         child: Text(
                                           gameApp[index]['title'],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 18,
                                               color: Colors.black),
@@ -73,6 +73,10 @@ class _HomeState extends State<Home> {
                                         top: 35,
                                         left: 20,
                                         child: Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              color: Colors.amber.shade400),
                                           child: Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 8.0,
@@ -80,14 +84,10 @@ class _HomeState extends State<Home> {
                                                 top: 4,
                                                 bottom: 4),
                                             child: Text(gameApp[index]['genre'],
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 10)),
                                           ),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: Colors.amber.shade400),
                                         )),
                                     Positioned(
                                       bottom: 5,
@@ -102,7 +102,6 @@ class _HomeState extends State<Home> {
                                   ])),
                             ),
                             onTap: () {
-                              //TODO: llamar pantalla
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -114,7 +113,7 @@ class _HomeState extends State<Home> {
                           );
                         },
                       ))
-                    : Center(
+                    : const Center(
                         child: CircularProgressIndicator(),
                       )
               ]),
