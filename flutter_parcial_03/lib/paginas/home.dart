@@ -14,10 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- // var pokeApi =
-   //   "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json";
-    var pokeApi =
-      "https://www.freetogame.com/api/games";
+
   List gameApp = [];
   @override
   Widget build(BuildContext context) {
@@ -27,15 +24,6 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.lightBlueAccent,
         body: Stack(
           children: [
-            Positioned(
-              bottom: -50,
-              right: -50,
-              child: Image.asset(
-                "assets/img/pokeball.png",
-                width: 200,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
             Positioned(
               top: 45,
               left: 20,
