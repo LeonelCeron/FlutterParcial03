@@ -2,15 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class DetallePokemon extends StatefulWidget {
-  final pokemonDetalle;
+  final gameDetalle;
   final Color color;
-  final int idpokemon;
+  final int idgame;
 
   const DetallePokemon(
       {super.key,
-      required this.pokemonDetalle,
+      required this.gameDetalle,
       required this.color,
-      required this.idpokemon});
+      required this.idgame});
   @override
   State<DetallePokemon> createState() => _DetallePokemonState();
 }
@@ -39,7 +39,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
             top: 80,
             left: 20,
             child: Text(
-              widget.pokemonDetalle['title'],
+              widget.gameDetalle['title'],
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -80,7 +80,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
                               Container(
                                   width: anchodeta * 0.3,
                                   child: Text(
-                                    widget.pokemonDetalle['title'],
+                                    widget.gameDetalle['title'],
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -103,7 +103,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
                               Container(
                                   width: anchodeta * 0.3,
                                   child: Text(
-                                    widget.pokemonDetalle['genre'],
+                                    widget.gameDetalle['genre'],
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 20,
@@ -126,7 +126,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
                               Container(
                                   width: anchodeta * 0.3,
                                   child: Text(
-                                    widget.pokemonDetalle['platform'],
+                                    widget.gameDetalle['platform'],
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -149,7 +149,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
                               Container(
                                   width: anchodeta * 0.3,
                                   child: Text(
-                                    widget.pokemonDetalle['publisher'],
+                                    widget.gameDetalle['publisher'],
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -172,7 +172,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
                               Container(
                                   width: anchodeta * 0.3,
                                   child: Text(
-                                    widget.pokemonDetalle['developer'],
+                                    widget.gameDetalle['developer'],
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -195,7 +195,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
                               Container(
                                   width: anchodeta * 0.3,
                                   child: Text(
-                                    widget.pokemonDetalle['release_date'],
+                                    widget.gameDetalle['release_date'],
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 18,
@@ -211,7 +211,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
             top: (altodeta * 0.18) - 10,
             //left: (altodeta / 2) - 220,
             child: CachedNetworkImage(
-                imageUrl: widget.pokemonDetalle['thumbnail'],
+                imageUrl: widget.gameDetalle['thumbnail'],
                 height: 150,
                 fit: BoxFit.fitHeight),
           )

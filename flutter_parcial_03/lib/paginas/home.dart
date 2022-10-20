@@ -107,9 +107,9 @@ class _HomeState extends State<Home> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (_) => DetallePokemon(
-                                          pokemonDetalle: gameApp[index],
+                                          gameDetalle: gameApp[index],
                                           color: Colors.green,
-                                          idpokemon: index)));
+                                          idgame: index)));
                             },
                             
                           );
