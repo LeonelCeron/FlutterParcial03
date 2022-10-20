@@ -14,17 +14,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   List gameApp = [];
   @override
   Widget build(BuildContext context) {
     var ancho = MediaQuery.of(context).size.width;
     var alto = MediaQuery.of(context).size.height;
+    var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
         body: Stack(
           children: [
-            Positioned(
+            const Positioned(
               top: 45,
               left: 20,
               child: Text(
@@ -54,9 +54,10 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 4.0, horizontal: 8),
                               child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                borderRadius: BorderRadius.all(Radius.circular(20))),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
                                   child: Stack(children: [
                                     Positioned(
                                         top: 10,
@@ -68,7 +69,6 @@ class _HomeState extends State<Home> {
                                               fontSize: 18,
                                               color: Colors.black),
                                         )),
-                                    
                                     Positioned(
                                         top: 35,
                                         left: 20,
@@ -94,13 +94,13 @@ class _HomeState extends State<Home> {
                                       right: 35,
                                       child: CachedNetworkImage(
                                         imageUrl: gameApp[index]['thumbnail'],
-                                        height: 80,
+                                        height:
+                                            (isPortrait) ? 80 : ancho * 0.22,
                                         fit: BoxFit.fitHeight,
                                       ),
                                     ),
                                   ])),
                             ),
-                            
                             onTap: () {
                               //TODO: llamar pantalla
                               Navigator.push(
@@ -111,7 +111,6 @@ class _HomeState extends State<Home> {
                                           color: Colors.green,
                                           idgame: index)));
                             },
-                            
                           );
                         },
                       ))
@@ -133,22 +132,17 @@ class _HomeState extends State<Home> {
   }
 
   void datosPokemon() {
-   
-    var url = Uri.https('raw.githubusercontent.com','/LeonelCeron/FlutterParcial03/main/flutter_parcial_03/freetogame.json');
-   
-   // var url = Uri.https('www.freetogame.com','/api/games');
+    //var url = Uri.https('raw.githubusercontent.com','/LeonelCeron/FlutterParcial03/main/flutter_parcial_03/freetogame.json');
+
+    var url = Uri.https('www.freetogame.com', '/api/games');
     http.get(url).then((value) {
       if (value.statusCode == 200) {
         var decodejsonData = jsonDecode(value.body);
-        gameApp = decodejsonData['games'];
+        gameApp = decodejsonData;
         //print(gameApp[2]['id']);
         //print(gameApp);
         setState(() {});
       }
-
-      //  print(decodejsonData);
-
-      
     });
     //200 correcto
     //404 incorrecto
