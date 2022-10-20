@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Positioned(
-              top: 50,
+              top: 45,
               left: 20,
               child: Text(
                 "GameApp Utec",
@@ -70,16 +70,6 @@ class _HomeState extends State<Home> {
                                   color: Colors.white,
                                 borderRadius: BorderRadius.all(Radius.circular(20))),
                                   child: Stack(children: [
-                                    Positioned(
-                                      bottom: 10,
-                                      right: 10,
-                                      child: Image.asset(
-                                        "assets/img/pokeball.png",
-                                        height: 50,
-                                        fit: BoxFit.fitHeight,
-                                      ),
-                                    ),
-                                    
                                     Positioned(
                                         top: 10,
                                         left: 20,
@@ -159,18 +149,18 @@ class _HomeState extends State<Home> {
     var url = Uri.https('raw.githubusercontent.com','/LeonelCeron/FlutterParcial03/main/flutter_parcial_03/freetogame.json');
    
    // var url = Uri.https('www.freetogame.com','/api/games');
-    //var url = Uri.https('raw.githubusercontent.com','/Biuni/PokemonGO-Pokedex/master/pokedex.json');
     http.get(url).then((value) {
       if (value.statusCode == 200) {
         var decodejsonData = jsonDecode(value.body);
         gameApp = decodejsonData['games'];
         //print(gameApp[2]['id']);
+        //print(gameApp);
         setState(() {});
       }
 
       //  print(decodejsonData);
 
-         print(gameApp);
+      
     });
     //200 correcto
     //404 incorrecto
