@@ -167,11 +167,11 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     if (mounted) {
-      datosPokemon();
+      datosGameApp();
     }
   }
 
-  void datosPokemon() {
+  void datosGameApp() {
     //var url = Uri.https('raw.githubusercontent.com','/LeonelCeron/FlutterParcial03/main/flutter_parcial_03/freetogame.json');
 
     var url = Uri.https('www.freetogame.com', '/api/games');
