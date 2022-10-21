@@ -22,21 +22,11 @@ class _HomeState extends State<Home> {
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
+        appBar: appBarHome(),
         body: Stack(
           children: [
-            const Positioned(
-              top: 45,
-              left: 20,
-              child: Text(
-                "GameApp Utec",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
-              ),
-            ),
             Positioned(
-              top: 100,
+              top: 0,
               bottom: 0,
               width: ancho,
               child: Column(children: [
@@ -66,7 +56,7 @@ class _HomeState extends State<Home> {
                                           gameApp[index]['title'],
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 18,
+                                              fontSize: 14,
                                               color: Colors.black),
                                         )),
                                     Positioned(
@@ -120,6 +110,37 @@ class _HomeState extends State<Home> {
             ),
           ],
         ));
+  }
+
+  appBarHome() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      title: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              "GameApp Utec",
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
+            Container(
+              width: 50,
+              height: 50,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/img/Logo.png'),
+                      fit: BoxFit.cover)),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override

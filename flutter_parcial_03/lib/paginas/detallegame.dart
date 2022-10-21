@@ -34,7 +34,7 @@ class _DetallePokemonState extends State<DetallePokemon> {
               child: Text(
                 widget.gameDetalle['title'],
                 style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 30),
               ),
@@ -219,12 +219,21 @@ class _DetallePokemonState extends State<DetallePokemon> {
       title: Padding(
         padding: const EdgeInsets.only(left: 8.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+              icon: const Icon(Icons.arrow_back, color: Colors.black, size: 20),
               onPressed: () {
                 Navigator.pop(context);
               },
+            ),
+            Container(
+              width: 50,
+              height: 50,
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/img/Logo.png'),
+                      fit: BoxFit.cover)),
             ),
           ],
         ),
