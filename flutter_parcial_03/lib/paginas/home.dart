@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_parcial_03/js/data.dart';
 import 'package:http/http.dart' as http;
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -15,11 +16,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List gameApp = [];
+  int menuactivo = 0;
   @override
   Widget build(BuildContext context) {
     var ancho = MediaQuery.of(context).size.width;
     var alto = MediaQuery.of(context).size.height;
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    //print(gameApp);
     return Scaffold(
         backgroundColor: Colors.lightBlueAccent,
         appBar: appBarHome(),
@@ -30,6 +33,23 @@ class _HomeState extends State<Home> {
               bottom: 0,
               width: ancho,
               child: Column(children: [
+                Positioned(
+                  top: 10,
+                  left: 20,
+                  child: SingleChildScrollView(
+                      child: Column(
+                    children: [
+                      SizedBox(
+                        height: 40,
+                        child: wslideData(),
+                      ),
+                      SizedBox(
+                        height: 40,
+                        child: wslideApellidos(),
+                      ),
+                    ],
+                  )),
+                ),
                 gameApp.length != null
                     ? Expanded(
                         child: GridView.builder(
@@ -159,14 +179,110 @@ class _HomeState extends State<Home> {
       if (value.statusCode == 200) {
         var decodejsonData = jsonDecode(value.body);
         gameApp = decodejsonData;
-        //print(gameApp[2]['id']);
-        //print(gameApp);
         setState(() {});
       }
     });
-    //200 correcto
-    //404 incorrecto
-    //500
-    //505,504,505
+  }
+
+  Widget wslideData() {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30, top: 10),
+          child: Row(
+            children: List.generate(slideData.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      menuactivo = index;
+                    });
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 120,
+                        height: 30,
+                        decoration: menuactivo == index
+                            ? BoxDecoration(
+                                color: Colors.amber.shade400,
+                                borderRadius: BorderRadius.circular(50))
+                            : BoxDecoration(),
+                        child: Center(
+                          child: Text(
+                            slideData[index],
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: menuactivo == index
+                                  ? Colors.white
+                                  : Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
+          ),
+        ),
+      )
+    ]);
+  }
+
+  Widget wslideApellidos() {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30, top: 5),
+          child: Row(
+            children: List.generate(slideApellidos.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      menuactivo = index;
+                    });
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 120,
+                        height: 30,
+                        decoration: menuactivo == index
+                            ? BoxDecoration(
+                                color: Colors.amber.shade400,
+                                borderRadius: BorderRadius.circular(50))
+                            : BoxDecoration(),
+                        child: Center(
+                          child: Text(
+                            slideApellidos[index],
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: menuactivo == index
+                                  ? Colors.white
+                                  : Colors.black,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
+          ),
+        ),
+      )
+    ]);
   }
 }
